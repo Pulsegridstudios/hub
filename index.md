@@ -8,7 +8,6 @@ hero_subtitle: Applications, Development and Documentation
 status: reviewed
 ---
 
-# Contributor Hub
 
 ## Overview
 
