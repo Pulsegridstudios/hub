@@ -11,8 +11,6 @@ hero_subtitle: Behaviour, Moderation and Enforcement Standards
 status: reviewed
 ---
 
-# Code of Conduct
-
 ## Overview
 
 This section defines the expected standards of behaviour across Looped Operations.
