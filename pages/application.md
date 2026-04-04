@@ -14,7 +14,7 @@ status: reviewed
 
 ## Overview
 
-This section provides access to **current recruitment opportunities** within Looped Operations.
+This section provides access to **current recruitment opportunities** within PulseGrid Studios.
 
 Applications are opened and closed based on project requirements.  
 Not all roles will be available at all times.
@@ -23,7 +23,7 @@ Not all roles will be available at all times.
 
 ## Voluntary Roles
 
-All roles within Looped Operations are currently offered on a **voluntary basis**.
+All roles within PulseGrid Studios are currently offered on a **voluntary basis**.
 
 This means:
 
