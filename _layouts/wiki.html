@@ -65,14 +65,17 @@
   <div id="mobile-menu-panel" class="mobile-menu-panel" hidden>
     <div class="mobile-menu-inner">
       <div class="sidebar-search mobile-search">
-        <input
-          type="search"
-          id="wiki-search-mobile"
-          class="search-input"
-          placeholder="Search hub..."
-          aria-label="Search hub"
-          autocomplete="off"
-        >
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="wiki-search-mobile"
+            class="search-input"
+            placeholder="Search {{ site.title }}..."
+            aria-label="Search {{ site.title }}"
+            autocomplete="off"
+          >
+        </div>
         <div id="search-results-mobile" class="search-results"></div>
       </div>
 
@@ -178,14 +181,17 @@
       </a>
 
       <div class="sidebar-search">
-        <input
-          type="search"
-          id="wiki-search"
-          class="search-input"
-          placeholder="Search wiki..."
-          aria-label="Search wiki"
-          autocomplete="off"
-        >
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="search"
+            id="wiki-search"
+            class="search-input"
+            placeholder="Search {{ site.title }}..."
+            aria-label="Search {{ site.title }}"
+            autocomplete="off"
+          >
+        </div>
         <div id="search-results" class="search-results"></div>
       </div>
 
