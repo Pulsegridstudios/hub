@@ -11,18 +11,36 @@
 </head>
 <body>
 
-  <div id="page-loader" class="page-loader">
+<div id="page-loader" class="page-loader">
   <div class="loader-inner">
     {% if site.logo %}
       <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" class="loader-logo">
     {% endif %}
-    <div class="loader-title">Looped Operations Wiki</div>
+    <div class="loader-title">{{ site.title }}</div>
     <div class="loader-subtitle">Initialising systems...</div>
     <div class="loader-bar">
       <div class="loader-bar-fill"></div>
     </div>
   </div>
 </div>
+
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <strong>Cookie Notice</strong>
+      <p>
+        This site uses essential cookies and local storage for features such as theme preferences and interface settings.
+        <a href="{{ '/legal/privacy-cookies/' | relative_url }}">Learn more</a>.
+      </p>
+    </div>
+
+    <div class="cookie-banner-actions">
+      <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">Accept</button>
+      <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">Dismiss</button>
+    </div>
+  </div>
+</div>
+
 <div class="site-shell">
 
   <!-- Mobile top bar -->
@@ -60,7 +78,7 @@
 
       <nav class="mobile-nav">
         {% assign wiki_pages = site.html_pages | where: "layout", "wiki" %}
-        {% assign groups = "applications,wiki,development,discord" | split: "," %}
+        {% assign groups = "applications,wiki,development,discord,guides" | split: "," %}
 
         {% if page.nav_group and page.nav_group != "home" %}
 
@@ -68,12 +86,11 @@
 
           <div class="menu-heading">
             {% case page.nav_group %}
-              {% when "general" %}General
+              {% when "applications" %}Applications
+              {% when "wiki" %}Wiki Contributions
+              {% when "development" %}Game Development
+              {% when "discord" %}Discord Moderation
               {% when "guides" %}Guides
-              {% when "emergency" %}Emergency Procedures
-              {% when "maintenance" %}Maintenance
-              {% when "systems" %}Systems
-              {% when "reactor" %}Reactor
               {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
             {% endcase %}
           </div>
@@ -97,35 +114,34 @@
           <div class="menu-heading">Navigation</div>
 
           {% for group in groups %}
-            {% if group and group != "home" %}
-              {% assign landing_page = wiki_pages | where: "nav_group", group | where: "nav_hidden", true | first %}
+            {% assign group_pages = wiki_pages | where: "nav_group", group %}
+            {% if group_pages.size > 0 %}
+              {% assign landing_page = group_pages | where: "nav_hidden", true | first %}
               {% if landing_page %}
                 {% assign first_page = landing_page %}
               {% else %}
-                {% assign first_page = wiki_pages | where: "nav_group", group | sort: "nav_order" | first %}
+                {% assign first_page = group_pages | sort: "nav_order" | first %}
               {% endif %}
 
               {% if first_page %}
                 <a class="folder-link" href="{{ first_page.url | relative_url }}">
                   <span class="folder-icon">
                     {% case group %}
-                      {% when "general" %}🖥️
-                      {% when "guides" %}⚙️
-                      {% when "emergency" %}🚨
-                      {% when "maintenance" %}🛠️
-                      {% when "systems" %}🔧
-                      {% when "reactor" %}☢️
+                      {% when "applications" %}📋
+                      {% when "wiki" %}📚
+                      {% when "development" %}⚙️
+                      {% when "discord" %}💬
+                      {% when "guides" %}📘
                       {% else %}📁
                     {% endcase %}
                   </span>
                   <span>
                     {% case group %}
-                      {% when "general" %}General
+                      {% when "applications" %}Applications
+                      {% when "wiki" %}Wiki Contributions
+                      {% when "development" %}Game Development
+                      {% when "discord" %}Discord Moderation
                       {% when "guides" %}Guides
-                      {% when "emergency" %}Emergency Procedures
-                      {% when "maintenance" %}Maintenance
-                      {% when "systems" %}Systems
-                      {% when "reactor" %}Reactor
                       {% else %}{{ group | replace: "-", " " | capitalize }}
                     {% endcase %}
                   </span>
@@ -175,7 +191,7 @@
 
       <nav class="sidebar-nav">
         {% assign wiki_pages = site.html_pages | where: "layout", "wiki" %}
-        {% assign groups = "general,guides,emergency,maintenance,systems,reactor" | split: "," %}
+        {% assign groups = "applications,wiki,development,discord,guides" | split: "," %}
 
         {% if page.nav_group and page.nav_group != "home" %}
 
@@ -183,12 +199,11 @@
 
           <div class="menu-heading">
             {% case page.nav_group %}
-              {% when "general" %}General
+              {% when "applications" %}Applications
+              {% when "wiki" %}Wiki Contributions
+              {% when "development" %}Game Development
+              {% when "discord" %}Discord Moderation
               {% when "guides" %}Guides
-              {% when "emergency" %}Emergency Procedures
-              {% when "maintenance" %}Maintenance
-              {% when "systems" %}Systems
-              {% when "reactor" %}Reactor
               {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
             {% endcase %}
           </div>
@@ -212,39 +227,34 @@
           <div class="menu-heading">Navigation</div>
 
           {% for group in groups %}
-            {% if group and group != "home" %}
-              {% assign landing_page = wiki_pages | where: "nav_group", group | where: "nav_hidden", true | first %}
+            {% assign group_pages = wiki_pages | where: "nav_group", group %}
+            {% if group_pages.size > 0 %}
+              {% assign landing_page = group_pages | where: "nav_hidden", true | first %}
               {% if landing_page %}
                 {% assign first_page = landing_page %}
               {% else %}
-                {% assign first_page = wiki_pages | where: "nav_group", group | sort: "nav_order" | first %}
+                {% assign first_page = group_pages | sort: "nav_order" | first %}
               {% endif %}
 
               {% if first_page %}
                 <a class="folder-link" href="{{ first_page.url | relative_url }}">
                   <span class="folder-icon">
-{% case group %}
-  {% when "applications" %}📋
-  {% when "wiki" %}📚
-  {% when "development" %}⚙️
-  {% when "discord" %}💬
-  {% when "general" %}🖥️
-  {% when "guides" %}📘
-  {% when "emergency" %}🚨
-  {% when "maintenance" %}🛠️
-  {% when "systems" %}🔧
-  {% when "reactor" %}☢️
-  {% else %}📁
-{% endcase %}
+                    {% case group %}
+                      {% when "applications" %}📋
+                      {% when "wiki" %}📚
+                      {% when "development" %}⚙️
+                      {% when "discord" %}💬
+                      {% when "guides" %}📘
+                      {% else %}📁
+                    {% endcase %}
                   </span>
                   <span>
                     {% case group %}
-                      {% when "general" %}General
+                      {% when "applications" %}Applications
+                      {% when "wiki" %}Wiki Contributions
+                      {% when "development" %}Game Development
+                      {% when "discord" %}Discord Moderation
                       {% when "guides" %}Guides
-                      {% when "emergency" %}Emergency Procedures
-                      {% when "maintenance" %}Maintenance
-                      {% when "systems" %}Systems
-                      {% when "reactor" %}Reactor
                       {% else %}{{ group | replace: "-", " " | capitalize }}
                     {% endcase %}
                   </span>
@@ -288,8 +298,8 @@
     <div class="hero-banner hero-full"
          style="background-image: url('{{ "/assets/images/control-room-banner.jpg" | relative_url }}');">
       <div class="hero-overlay">
-        <h1>Looped Operations</h1>
-        <p>Advanced Gas-cooled Reactor Simulation</p>
+        <h1>{{ site.title }}</h1>
+        <p>{{ site.description }}</p>
       </div>
     </div>
     {% endif %}
@@ -297,16 +307,16 @@
     <div class="content-wrap">
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="{{ '/' | relative_url }}">Home</a>
+
         {% if page.nav_group and page.nav_group != "home" %}
           <span class="breadcrumb-sep">/</span>
           <span>
             {% case page.nav_group %}
-              {% when "general" %}General
+              {% when "applications" %}Applications
+              {% when "wiki" %}Wiki Contributions
+              {% when "development" %}Game Development
+              {% when "discord" %}Discord Moderation
               {% when "guides" %}Guides
-              {% when "emergency" %}Emergency Procedures
-              {% when "maintenance" %}Maintenance
-              {% when "systems" %}Systems
-              {% when "reactor" %}Reactor
               {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
             {% endcase %}
           </span>
@@ -314,18 +324,16 @@
 
         {% assign group_label = page.nav_group | replace: "-", " " | capitalize %}
 
-        {% if page.nav_group == "general" %}
-          {% assign group_label = "General" %}
+        {% if page.nav_group == "applications" %}
+          {% assign group_label = "Applications" %}
+        {% elsif page.nav_group == "wiki" %}
+          {% assign group_label = "Wiki Contributions" %}
+        {% elsif page.nav_group == "development" %}
+          {% assign group_label = "Game Development" %}
+        {% elsif page.nav_group == "discord" %}
+          {% assign group_label = "Discord Moderation" %}
         {% elsif page.nav_group == "guides" %}
           {% assign group_label = "Guides" %}
-        {% elsif page.nav_group == "emergency" %}
-          {% assign group_label = "Emergency Procedures" %}
-        {% elsif page.nav_group == "maintenance" %}
-          {% assign group_label = "Maintenance" %}
-        {% elsif page.nav_group == "systems" %}
-          {% assign group_label = "Systems" %}
-        {% elsif page.nav_group == "reactor" %}
-          {% assign group_label = "Reactor" %}
         {% endif %}
 
         {% if page.title and page.nav_group != "home" and page.title != group_label %}
@@ -376,6 +384,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileThemeButton = document.getElementById("theme-toggle-mobile");
   const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
   const mobileMenuPanel = document.getElementById("mobile-menu-panel");
+  const pageLoader = document.getElementById("page-loader");
+  const cookieBanner = document.getElementById("cookie-banner");
+  const cookieAccept = document.getElementById("cookie-accept");
+  const cookieDecline = document.getElementById("cookie-decline");
 
   function updateThemeButtons() {
     const isLight = document.documentElement.getAttribute("data-theme") === "light";
@@ -484,9 +496,6 @@ document.addEventListener("DOMContentLoaded", function () {
     wrapper.appendChild(firstCodeBlock);
   }
 
-  addHeadingAnchors();
-  addCopyButtonsToCodeBlocks();
-
   function setupSearch(inputId, resultsId) {
     const searchInput = document.getElementById(inputId);
     const searchResults = document.getElementById(resultsId);
@@ -521,12 +530,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function prettifyGroup(group) {
-      if (group === "general") return "General";
+      if (group === "applications") return "Applications";
+      if (group === "wiki") return "Wiki Contributions";
+      if (group === "development") return "Game Development";
+      if (group === "discord") return "Discord Moderation";
       if (group === "guides") return "Guides";
-      if (group === "emergency") return "Emergency Procedures";
-      if (group === "maintenance") return "Maintenance";
-      if (group === "systems") return "Systems";
-      if (group === "reactor") return "Reactor";
       return (group || "Page").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
     }
 
@@ -708,94 +716,76 @@ document.addEventListener("DOMContentLoaded", function () {
         clearSelection();
       }
     });
-    const pageLoader = document.getElementById("page-loader");
+  }
 
-if (pageLoader) {
-  const hasLoaded = sessionStorage.getItem("wiki-loaded");
+  addHeadingAnchors();
+  addCopyButtonsToCodeBlocks();
 
-  if (hasLoaded === "true") {
-    pageLoader.style.display = "none";
-  } else {
-    let pageLoaded = false;
-    let minTimePassed = false;
+  if (pageLoader) {
+    const hasLoaded = sessionStorage.getItem("wiki-loaded");
 
-    function tryHideLoader() {
-      if (pageLoaded && minTimePassed) {
-        pageLoader.classList.add("is-hidden");
+    if (hasLoaded === "true") {
+      pageLoader.style.display = "none";
+    } else {
+      let pageLoaded = false;
+      let minTimePassed = false;
 
-        sessionStorage.setItem("wiki-loaded", "true");
+      function tryHideLoader() {
+        if (pageLoaded && minTimePassed) {
+          pageLoader.classList.add("is-hidden");
+          sessionStorage.setItem("wiki-loaded", "true");
+        }
       }
+
+      window.addEventListener("load", () => {
+        pageLoaded = true;
+        tryHideLoader();
+      });
+
+      setTimeout(() => {
+        minTimePassed = true;
+        tryHideLoader();
+      }, 1000);
+    }
+  }
+
+  if (cookieBanner) {
+    const cookieChoice = localStorage.getItem("wiki-cookie-choice");
+
+    if (!cookieChoice) {
+      setTimeout(() => {
+        cookieBanner.hidden = false;
+        requestAnimationFrame(() => {
+          cookieBanner.classList.add("is-visible");
+        });
+      }, 600);
     }
 
-    window.addEventListener("load", () => {
-      pageLoaded = true;
-      tryHideLoader();
-    });
+    function hideCookieBanner() {
+      cookieBanner.classList.remove("is-visible");
+      setTimeout(() => {
+        cookieBanner.hidden = true;
+      }, 250);
+    }
 
-    setTimeout(() => {
-      minTimePassed = true;
-      tryHideLoader();
-    }, 1000);
-  }
-}
-const cookieBanner = document.getElementById("cookie-banner");
-const cookieAccept = document.getElementById("cookie-accept");
-const cookieDecline = document.getElementById("cookie-decline");
-
-if (cookieBanner) {
-  const cookieChoice = localStorage.getItem("wiki-cookie-choice");
-
-  if (!cookieChoice) {
-    setTimeout(() => {
-      cookieBanner.hidden = false;
-      requestAnimationFrame(() => {
-        cookieBanner.classList.add("is-visible");
+    if (cookieAccept) {
+      cookieAccept.addEventListener("click", () => {
+        localStorage.setItem("wiki-cookie-choice", "accepted");
+        hideCookieBanner();
       });
-    }, 600);
-  }
+    }
 
-  function hideCookieBanner() {
-    cookieBanner.classList.remove("is-visible");
-    setTimeout(() => {
-      cookieBanner.hidden = true;
-    }, 250);
-  }
-
-  if (cookieAccept) {
-    cookieAccept.addEventListener("click", () => {
-      localStorage.setItem("wiki-cookie-choice", "accepted");
-      hideCookieBanner();
-    });
-  }
-
-  if (cookieDecline) {
-    cookieDecline.addEventListener("click", () => {
-      localStorage.setItem("wiki-cookie-choice", "dismissed");
-      hideCookieBanner();
-    });
-  }
-}
+    if (cookieDecline) {
+      cookieDecline.addEventListener("click", () => {
+        localStorage.setItem("wiki-cookie-choice", "dismissed");
+        hideCookieBanner();
+      });
+    }
   }
 
   setupSearch("wiki-search", "search-results");
   setupSearch("wiki-search-mobile", "search-results-mobile");
 });
 </script>
-<div id="cookie-banner" class="cookie-banner" hidden>
-  <div class="cookie-banner-inner">
-    <div class="cookie-banner-text">
-      <strong>Cookie Notice</strong>
-      <p>
-        This site uses essential cookies and local storage for features such as theme preferences and interface settings.
-        <a href="{{ '/legal/privacy-cookies/' | relative_url }}">Learn more</a>.
-      </p>
-    </div>
-
-    <div class="cookie-banner-actions">
-      <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">Accept</button>
-      <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">Dismiss</button>
-    </div>
-  </div>
-</div>
 </body>
 </html>
