@@ -7,42 +7,77 @@ nav_order: 0
 nav_hidden: true
 hero_image: /assets/images/control-room-banner.jpg
 hero_title: Applications
-hero_subtitle: Join the team
+hero_subtitle: Recruitment and Role Access
+status: reviewed
 ---
+
+# Applications
 
 ## Overview
 
-Applications are open for selected roles within Looped Operations.
+This section provides access to **current recruitment opportunities** within Looped Operations.
+
+Applications are opened and closed based on project requirements.  
+Not all roles will be available at all times.
 
 ---
 
 ## Available Roles
 
-- [Discord Moderator]({{ '/pages/no-current-vacancies/' | relative_url }})
-- [Game Moderator]({{ '/pages/no-current-vacancies/' | relative_url }})
-- [Developer]({{ '/pages/no-current-vacancies/' | relative_url }})
-- [Tester]({{ '/pages/no-current-vacancies/' | relative_url }})
+| Role               | Status | Access |
+|--------------------|--------|--------|
+| Discord Moderator  | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
+| Game Moderator     | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
+| Developer          | Open   | [Apply Now]({{ '/pages/developer-application/' | relative_url }}) |
+| Tester             | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
+
+> ℹ️ **Note**  
+> When applications are open, links will redirect to the relevant application form.
 
 ---
 
 ## Requirements
 
-- Professional behaviour  
-- Ability to follow procedures  
-- Good communication skills  
-- Understanding of project goals  
+All applicants are expected to meet the following criteria:
+
+- Professional conduct and behaviour  
+- Ability to follow structured procedures  
+- Clear and effective communication  
+- Understanding of project objectives  
+
+Additional role-specific requirements may apply.
 
 ---
 
-## Important
+## Recruitment Status
+
+Applications are currently:
+
+**Closed**
+
+Recruitment will reopen when additional personnel are required.
+
+---
+
+## Application Process
+
+When applications are open:
+
+1. Select the relevant role  
+2. Complete the application form  
+3. Submit for review  
+4. Await response from the team  
+
+---
+
+## Important Notice
 
 > ⚠️ **Warning**  
-> Abuse of permissions or systems will result in immediate removal.
+> Misuse of systems, false applications, or abuse of granted permissions will result in immediate removal and potential restriction from future applications.
 
 ---
 
-## Apply
+## Future Updates
 
-Use the official application form:
-
-[Apply Here](#)
+> ℹ️ **Note**  
+> This page will be updated when new roles become available or recruitment status changes.
