@@ -60,7 +60,7 @@
 
       <nav class="mobile-nav">
         {% assign wiki_pages = site.html_pages | where: "layout", "wiki" %}
-        {% assign groups = "general,guides,emergency,maintenance,systems,reactor" | split: "," %}
+        {% assign groups = "applications,wiki,development,discord" | split: "," %}
 
         {% if page.nav_group and page.nav_group != "home" %}
 
@@ -223,15 +223,19 @@
               {% if first_page %}
                 <a class="folder-link" href="{{ first_page.url | relative_url }}">
                   <span class="folder-icon">
-                    {% case group %}
-                      {% when "general" %}🖥️
-                      {% when "guides" %}⚙️
-                      {% when "emergency" %}🚨
-                      {% when "maintenance" %}🛠️
-                      {% when "systems" %}🔧
-                      {% when "reactor" %}☢️
-                      {% else %}📁
-                    {% endcase %}
+{% case group %}
+  {% when "applications" %}📋
+  {% when "wiki" %}📚
+  {% when "development" %}⚙️
+  {% when "discord" %}💬
+  {% when "general" %}🖥️
+  {% when "guides" %}📘
+  {% when "emergency" %}🚨
+  {% when "maintenance" %}🛠️
+  {% when "systems" %}🔧
+  {% when "reactor" %}☢️
+  {% else %}📁
+{% endcase %}
                   </span>
                   <span>
                     {% case group %}
