@@ -1355,3 +1355,20 @@ html[data-theme="light"] .page-loader {
 .search-input {
   padding-left: 36px !important;
 }
+
+.form-embed-wrapper {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.application-form-embed {
+  display: block;
+  width: 100%;
+  min-height: 1200px;
+  border: 0;
+  background: transparent;
+}
