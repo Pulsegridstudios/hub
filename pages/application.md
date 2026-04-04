@@ -3,7 +3,9 @@ title: Applications
 layout: wiki
 permalink: /pages/applications/
 nav_group: applications
-nav_order: 1
+nav_order: 0
+nav_hidden: true
+hero_image: /assets/images/control-room-banner.jpg
 hero_title: Applications
 hero_subtitle: Join the team
 ---

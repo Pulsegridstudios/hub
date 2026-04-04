@@ -3,7 +3,9 @@ title: Game Development
 layout: wiki
 permalink: /pages/game-development/
 nav_group: development
-nav_order: 1
+nav_order: 0
+nav_hidden: true
+hero_image: /assets/images/control-room-banner.jpg
 hero_title: Game Development
 hero_subtitle: Systems, scripting, and standards
 ---
