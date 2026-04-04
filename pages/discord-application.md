@@ -28,6 +28,7 @@ Applications may be used for positions such as:
 
 Please make sure you:
 
+- please read our [guidelines]({{ '/pages/discord-moderation/' | relative_url }})
 - understand the expectations of staff conduct
 - can remain professional when dealing with users
 - are comfortable following rules and internal guidance
