@@ -11,7 +11,6 @@ hero_subtitle: Recruitment and Role Access
 status: reviewed
 ---
 
-# Applications
 
 ## Overview
 
@@ -19,6 +18,21 @@ This section provides access to **current recruitment opportunities** within Loo
 
 Applications are opened and closed based on project requirements.  
 Not all roles will be available at all times.
+
+---
+
+## Voluntary Roles
+
+All roles within Looped Operations are currently offered on a **voluntary basis**.
+
+This means:
+
+- No financial compensation is provided  
+- Contributions are made at your own discretion  
+- Experience gained may support personal development  
+
+> ℹ️ **Note**  
+> These roles are intended for individuals who wish to contribute to the project, gain experience, and be part of the development process.
 
 ---
 
