@@ -79,9 +79,6 @@ Please make sure you:
 
 Complete the application below. Please answer honestly and fully.
 
-> ⚠️ **Warning**  
-> Joke applications, false information, or misuse of the application system may result in restrictions from future applications.
-
 <div class="application-panel">
   <form id="discord-app-form" class="application-form multi-step-form">
 
