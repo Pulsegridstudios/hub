@@ -74,8 +74,6 @@ Please make sure you:
 
 ## Application Form
 
----
-
 
 Complete the application below. Please answer honestly and fully.
 
