@@ -197,21 +197,21 @@
 
       <nav class="sidebar-nav">
         {% assign wiki_pages = site.html_pages | where: "layout", "wiki" %}
-        {% assign groups = "applications,wiki,development,discord,guides" | split: "," %}
+        {% assign groups = "applications,wiki,development,discord,conduct" | split: "," %}
 
         {% if page.nav_group and page.nav_group != "home" %}
 
           <a class="back-link" href="{{ '/' | relative_url }}">← Back</a>
 
           <div class="menu-heading">
-            {% case page.nav_group %}
-              {% when "applications" %}Applications
-              {% when "wiki" %}Wiki Contributions
-              {% when "development" %}Game Development
-              {% when "discord" %}Discord Moderation
-              {% when "guides" %}Guides
-              {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
-            {% endcase %}
+{% case page.nav_group %}
+  {% when "applications" %}Applications
+  {% when "wiki" %}Wiki Contributions
+  {% when "development" %}Game Development
+  {% when "discord" %}Discord Moderation
+  {% when "conduct" %}Code of Conduct
+  {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
+{% endcase %}
           </div>
 
           {% assign group_pages = wiki_pages | where: "nav_group", page.nav_group | sort: "nav_order" %}
@@ -250,7 +250,7 @@
                       {% when "wiki" %}📚
                       {% when "development" %}⚙️
                       {% when "discord" %}💬
-                      {% when "guides" %}📘
+                      {% when "conduct" %}📘
                       {% else %}📁
                     {% endcase %}
                   </span>
@@ -260,7 +260,7 @@
                       {% when "wiki" %}Wiki Contributions
                       {% when "development" %}Game Development
                       {% when "discord" %}Discord Moderation
-                      {% when "guides" %}Guides
+   {% when "conduct" %}Code of Conduct
                       {% else %}{{ group | replace: "-", " " | capitalize }}
                     {% endcase %}
                   </span>
