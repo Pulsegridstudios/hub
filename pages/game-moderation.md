@@ -2,7 +2,7 @@
 title: Game Moderation Guidelines
 layout: wiki
 permalink: /pages/game-moderation/
-nav_group: guides
+nav_group: conduct
 nav_order: 1
 hero_image: /assets/images/control-room-banner.jpg
 hero_title: Game Moderation

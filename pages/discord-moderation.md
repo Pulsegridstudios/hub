@@ -2,7 +2,7 @@
 title: Discord Moderation Guidelines
 layout: wiki
 permalink: /pages/discord-moderation/
-nav_group: guides
+nav_group: conduct
 nav_order: 2
 hero_image: /assets/images/control-room-banner.jpg
 hero_title: Discord Moderation

@@ -93,7 +93,7 @@
               {% when "wiki" %}Wiki Contributions
               {% when "development" %}Game Development
               {% when "discord" %}Discord Moderation
-              {% when "guides" %}Guides
+              {% when "conduct" %}Code of Conduct
               {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
             {% endcase %}
           </div>
@@ -134,7 +134,7 @@
                       {% when "wiki" %}📚
                       {% when "development" %}⚙️
                       {% when "discord" %}💬
-                      {% when "guides" %}📘
+                      {% when "conduct" %}📘
                       {% else %}📁
                     {% endcase %}
                   </span>
@@ -144,7 +144,7 @@
                       {% when "wiki" %}Wiki Contributions
                       {% when "development" %}Game Development
                       {% when "discord" %}Discord Moderation
-                      {% when "guides" %}Guides
+                      {% when "conduct" %}Code of Conduct
                       {% else %}{{ group | replace: "-", " " | capitalize }}
                     {% endcase %}
                   </span>
