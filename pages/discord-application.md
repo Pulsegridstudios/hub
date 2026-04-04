@@ -9,7 +9,6 @@ hero_title: Discord Application
 hero_subtitle: Apply for Discord moderation and community support roles
 status: reviewed
 ---
-
 ## Overview
 
 Use this page to apply for Discord-related roles within the Looped Operations project.
@@ -53,9 +52,59 @@ Please make sure you:
       <input id="roblox_name" name="roblox_name" type="text">
     </div>
 
+    <div class="form-grid-two">
+      <div class="form-row">
+        <label for="age">Age</label>
+        <input id="age" name="age" type="text" required>
+      </div>
+
+      <div class="form-row">
+        <label for="timezone">Timezone</label>
+        <input id="timezone" name="timezone" type="text" required>
+      </div>
+    </div>
+
     <div class="form-row">
-      <label for="age">Age</label>
-      <input id="age" name="age" type="text" required>
+      <label for="activity">How active can you be?</label>
+      <input id="activity" name="activity" type="text" placeholder="Example: Most evenings, weekends, 2-3 hours per day" required>
+    </div>
+
+    <div class="form-grid-two">
+      <div class="form-row">
+        <label for="moderation_experience">Do you have moderation experience?</label>
+        <select id="moderation_experience" name="moderation_experience" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="vc_moderation">Are you comfortable moderating voice chats?</label>
+        <select id="vc_moderation" name="vc_moderation" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="conflict_handling">Are you comfortable handling conflict professionally?</label>
+        <select id="conflict_handling" name="conflict_handling" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="active_member">Are you already an active member of the community?</label>
+        <select id="active_member" name="active_member" required>
+          <option value="">Select...</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
     </div>
 
     <div class="form-row">
@@ -66,6 +115,11 @@ Please make sure you:
     <div class="form-row">
       <label for="why_join">Why do you want to join?</label>
       <textarea id="why_join" name="why_join" rows="6" required></textarea>
+    </div>
+
+    <div class="form-row">
+      <label for="strengths">What strengths would you bring to the team?</label>
+      <textarea id="strengths" name="strengths" rows="5" required></textarea>
     </div>
 
     <div class="form-row honeypot" aria-hidden="true">
@@ -93,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
 
     status.textContent = "";
+    status.classList.remove("is-success", "is-error");
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
 
@@ -101,8 +156,15 @@ document.addEventListener("DOMContentLoaded", function () {
       discord_name: String(formData.get("discord_name") || "").trim(),
       roblox_name: String(formData.get("roblox_name") || "").trim(),
       age: String(formData.get("age") || "").trim(),
+      timezone: String(formData.get("timezone") || "").trim(),
+      activity: String(formData.get("activity") || "").trim(),
+      moderation_experience: String(formData.get("moderation_experience") || "").trim(),
+      vc_moderation: String(formData.get("vc_moderation") || "").trim(),
+      conflict_handling: String(formData.get("conflict_handling") || "").trim(),
+      active_member: String(formData.get("active_member") || "").trim(),
       experience: String(formData.get("experience") || "").trim(),
       why_join: String(formData.get("why_join") || "").trim(),
+      strengths: String(formData.get("strengths") || "").trim(),
       website: String(formData.get("website") || "").trim()
     };
 
@@ -123,8 +185,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       form.reset();
       status.textContent = "Application submitted successfully.";
+      status.classList.add("is-success");
     } catch (error) {
       status.textContent = error.message || "Something went wrong.";
+      status.classList.add("is-error");
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = "Submit Application";
