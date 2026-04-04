@@ -3,8 +3,7 @@ title: Developer Application
 layout: wiki
 permalink: /pages/developer-application/
 nav_group: applications
-nav_order: 99
-nav_hidden: true
+nav_order: 2
 hero_image: /assets/images/control-room-banner.jpg
 hero_title: Developer Application
 hero_subtitle: Apply to help build Looped Operations

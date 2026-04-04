@@ -3,8 +3,7 @@ title: Discord Application
 layout: wiki
 permalink: /pages/discord-application/
 nav_group: applications
-nav_order: 99
-nav_hidden: true
+nav_order: 1
 hero_image: /assets/images/control-room-banner.jpg
 hero_title: Discord Application
 hero_subtitle: Apply for Discord moderation and community support roles
