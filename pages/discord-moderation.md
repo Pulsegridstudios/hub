@@ -33,7 +33,7 @@ The goal is to create a **professional, structured, and safe environment** for:
 - Players
 
 > ℹ️ **Note**  
-> Moderators are representatives of PulseGrid Studios and must act accordingly.
+> Moderators are representatives of PulseGrid Studios and must act accordingly.4 messages have been deleted.
 
 ---
 
