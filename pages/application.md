@@ -57,7 +57,9 @@ All applicants are expected to meet the following criteria:
 - Professional conduct and behaviour  
 - Ability to follow structured procedures  
 - Clear and effective communication  
-- Understanding of project objectives  
+- Understanding of project objectives
+- Be over the age of 16
+- Have a good level of english  
 
 Additional role-specific requirements may apply.
 
