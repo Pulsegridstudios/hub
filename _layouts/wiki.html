@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
+</head>
+<body>
+
+  <div id="page-loader" class="page-loader">
+  <div class="loader-inner">
+    {% if site.logo %}
+      <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" class="loader-logo">
+    {% endif %}
+    <div class="loader-title">Looped Operations Wiki</div>
+    <div class="loader-subtitle">Initialising systems...</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+</div>
+<div class="site-shell">
+
+  <!-- Mobile top bar -->
+  <header class="mobile-topbar">
+    <a class="mobile-brand" href="{{ '/' | relative_url }}">
+      {% if site.logo %}
+        <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" class="mobile-logo">
+      {% endif %}
+      <div class="mobile-brand-text">
+        <div class="mobile-title">{{ site.title }}</div>
+      </div>
+    </a>
+
+    <div class="mobile-topbar-actions">
+      <button id="theme-toggle-mobile" class="theme-toggle mobile-theme-toggle" type="button" aria-label="Toggle theme">☀️</button>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu-panel">
+        ☰
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-menu-panel" class="mobile-menu-panel" hidden>
+    <div class="mobile-menu-inner">
+      <div class="sidebar-search mobile-search">
+        <input
+          type="search"
+          id="wiki-search-mobile"
+          class="search-input"
+          placeholder="Search wiki..."
+          aria-label="Search wiki"
+          autocomplete="off"
+        >
+        <div id="search-results-mobile" class="search-results"></div>
+      </div>
+
+      <nav class="mobile-nav">
+        {% assign wiki_pages = site.html_pages | where: "layout", "wiki" %}
+        {% assign groups = "general,guides,emergency,maintenance,systems,reactor" | split: "," %}
+
+        {% if page.nav_group and page.nav_group != "home" %}
+
+          <a class="back-link" href="{{ '/' | relative_url }}">← Back</a>
+
+          <div class="menu-heading">
+            {% case page.nav_group %}
+              {% when "general" %}General
+              {% when "guides" %}Guides
+              {% when "emergency" %}Emergency Procedures
+              {% when "maintenance" %}Maintenance
+              {% when "systems" %}Systems
+              {% when "reactor" %}Reactor
+              {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
+            {% endcase %}
+          </div>
+
+          {% assign group_pages = wiki_pages | where: "nav_group", page.nav_group | sort: "nav_order" %}
+          {% for p in group_pages %}
+            {% unless p.nav_hidden %}
+              <a href="{{ p.url | relative_url }}"{% if page.url == p.url %} aria-current="page"{% endif %}>
+                {{ p.title }}
+              </a>
+            {% endunless %}
+          {% endfor %}
+
+        {% else %}
+
+          <a href="{{ '/' | relative_url }}" class="folder-link"{% if page.url == "/" or page.url == "/index.html" %} aria-current="page"{% endif %}>
+            <span class="folder-icon">🏠</span>
+            <span>Home</span>
+          </a>
+
+          <div class="menu-heading">Navigation</div>
+
+          {% for group in groups %}
+            {% if group and group != "home" %}
+              {% assign landing_page = wiki_pages | where: "nav_group", group | where: "nav_hidden", true | first %}
+              {% if landing_page %}
+                {% assign first_page = landing_page %}
+              {% else %}
+                {% assign first_page = wiki_pages | where: "nav_group", group | sort: "nav_order" | first %}
+              {% endif %}
+
+              {% if first_page %}
+                <a class="folder-link" href="{{ first_page.url | relative_url }}">
+                  <span class="folder-icon">
+                    {% case group %}
+                      {% when "general" %}🖥️
+                      {% when "guides" %}⚙️
+                      {% when "emergency" %}🚨
+                      {% when "maintenance" %}🛠️
+                      {% when "systems" %}🔧
+                      {% when "reactor" %}☢️
+                      {% else %}📁
+                    {% endcase %}
+                  </span>
+                  <span>
+                    {% case group %}
+                      {% when "general" %}General
+                      {% when "guides" %}Guides
+                      {% when "emergency" %}Emergency Procedures
+                      {% when "maintenance" %}Maintenance
+                      {% when "systems" %}Systems
+                      {% when "reactor" %}Reactor
+                      {% else %}{{ group | replace: "-", " " | capitalize }}
+                    {% endcase %}
+                  </span>
+                </a>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+        {% endif %}
+
+        <div class="mobile-extra-links">
+          {% if site.aux_links %}
+            {% for link in site.aux_links %}
+              <a href="{{ link[1] }}" target="_blank" rel="noopener noreferrer">{{ link[0] }}</a>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Desktop sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <a class="site-brand" href="{{ '/' | relative_url }}">
+        {% if site.logo %}
+          <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" class="site-logo">
+        {% endif %}
+        <div class="site-brand-text">
+          <div class="site-title">{{ site.title }}</div>
+          <div class="site-tagline">{{ site.description }}</div>
+        </div>
+      </a>
+
+      <div class="sidebar-search">
+        <input
+          type="search"
+          id="wiki-search"
+          class="search-input"
+          placeholder="Search wiki..."
+          aria-label="Search wiki"
+          autocomplete="off"
+        >
+        <div id="search-results" class="search-results"></div>
+      </div>
+
+      <nav class="sidebar-nav">
+        {% assign wiki_pages = site.html_pages | where: "layout", "wiki" %}
+        {% assign groups = "general,guides,emergency,maintenance,systems,reactor" | split: "," %}
+
+        {% if page.nav_group and page.nav_group != "home" %}
+
+          <a class="back-link" href="{{ '/' | relative_url }}">← Back</a>
+
+          <div class="menu-heading">
+            {% case page.nav_group %}
+              {% when "general" %}General
+              {% when "guides" %}Guides
+              {% when "emergency" %}Emergency Procedures
+              {% when "maintenance" %}Maintenance
+              {% when "systems" %}Systems
+              {% when "reactor" %}Reactor
+              {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
+            {% endcase %}
+          </div>
+
+          {% assign group_pages = wiki_pages | where: "nav_group", page.nav_group | sort: "nav_order" %}
+          {% for p in group_pages %}
+            {% unless p.nav_hidden %}
+              <a href="{{ p.url | relative_url }}"{% if page.url == p.url %} aria-current="page"{% endif %}>
+                {{ p.title }}
+              </a>
+            {% endunless %}
+          {% endfor %}
+
+        {% else %}
+
+          <a href="{{ '/' | relative_url }}" class="folder-link"{% if page.url == "/" or page.url == "/index.html" %} aria-current="page"{% endif %}>
+            <span class="folder-icon">🏠</span>
+            <span>Home</span>
+          </a>
+
+          <div class="menu-heading">Navigation</div>
+
+          {% for group in groups %}
+            {% if group and group != "home" %}
+              {% assign landing_page = wiki_pages | where: "nav_group", group | where: "nav_hidden", true | first %}
+              {% if landing_page %}
+                {% assign first_page = landing_page %}
+              {% else %}
+                {% assign first_page = wiki_pages | where: "nav_group", group | sort: "nav_order" | first %}
+              {% endif %}
+
+              {% if first_page %}
+                <a class="folder-link" href="{{ first_page.url | relative_url }}">
+                  <span class="folder-icon">
+                    {% case group %}
+                      {% when "general" %}🖥️
+                      {% when "guides" %}⚙️
+                      {% when "emergency" %}🚨
+                      {% when "maintenance" %}🛠️
+                      {% when "systems" %}🔧
+                      {% when "reactor" %}☢️
+                      {% else %}📁
+                    {% endcase %}
+                  </span>
+                  <span>
+                    {% case group %}
+                      {% when "general" %}General
+                      {% when "guides" %}Guides
+                      {% when "emergency" %}Emergency Procedures
+                      {% when "maintenance" %}Maintenance
+                      {% when "systems" %}Systems
+                      {% when "reactor" %}Reactor
+                      {% else %}{{ group | replace: "-", " " | capitalize }}
+                    {% endcase %}
+                  </span>
+                </a>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+        {% endif %}
+      </nav>
+
+      <div class="sidebar-footer">
+        {% if site.aux_links %}
+          {% for link in site.aux_links %}
+            <a href="{{ link[1] }}" target="_blank" rel="noopener noreferrer">{{ link[0] }}</a>
+          {% endfor %}
+        {% endif %}
+
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme">☀️</button>
+      </div>
+
+      <div class="sidebar-copyright">
+        © {{ site.time | date: "%Y" }} PulseGrid Studios
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    {% if page.hero_image %}
+    <div class="hero-banner hero-full"
+         style="background-image: url('{{ page.hero_image | relative_url }}');">
+      <div class="hero-overlay">
+        <h1>{{ page.hero_title | default: page.title }}</h1>
+        {% if page.hero_subtitle %}
+          <p>{{ page.hero_subtitle }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    {% elsif page.url == "/" %}
+    <div class="hero-banner hero-full"
+         style="background-image: url('{{ "/assets/images/control-room-banner.jpg" | relative_url }}');">
+      <div class="hero-overlay">
+        <h1>Looped Operations</h1>
+        <p>Advanced Gas-cooled Reactor Simulation</p>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="content-wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        {% if page.nav_group and page.nav_group != "home" %}
+          <span class="breadcrumb-sep">/</span>
+          <span>
+            {% case page.nav_group %}
+              {% when "general" %}General
+              {% when "guides" %}Guides
+              {% when "emergency" %}Emergency Procedures
+              {% when "maintenance" %}Maintenance
+              {% when "systems" %}Systems
+              {% when "reactor" %}Reactor
+              {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
+            {% endcase %}
+          </span>
+        {% endif %}
+
+        {% assign group_label = page.nav_group | replace: "-", " " | capitalize %}
+
+        {% if page.nav_group == "general" %}
+          {% assign group_label = "General" %}
+        {% elsif page.nav_group == "guides" %}
+          {% assign group_label = "Guides" %}
+        {% elsif page.nav_group == "emergency" %}
+          {% assign group_label = "Emergency Procedures" %}
+        {% elsif page.nav_group == "maintenance" %}
+          {% assign group_label = "Maintenance" %}
+        {% elsif page.nav_group == "systems" %}
+          {% assign group_label = "Systems" %}
+        {% elsif page.nav_group == "reactor" %}
+          {% assign group_label = "Reactor" %}
+        {% endif %}
+
+        {% if page.title and page.nav_group != "home" and page.title != group_label %}
+          <span class="breadcrumb-sep">/</span>
+          <span class="breadcrumb-current">{{ page.title }}</span>
+        {% endif %}
+      </nav>
+
+      {% if page.title %}
+      <header class="page-header">
+        <div class="page-title-row">
+          <h1>{{ page.title }}</h1>
+
+          {% if page.status %}
+            <span class="status-badge status-{{ page.status | downcase }}">
+              {% case page.status | downcase %}
+                {% when "draft" %}Draft
+                {% when "wip" %}Work in Progress
+                {% when "reviewed" %}Reviewed
+                {% when "complete" %}Complete
+                {% else %}{{ page.status }}
+              {% endcase %}
+            </span>
+          {% endif %}
+        </div>
+      </header>
+      {% endif %}
+
+      <article class="page-content" id="page-content">
+        {{ content }}
+      </article>
+    </div>
+  </main>
+</div>
+
+<script>
+(function () {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+  } else {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+})();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const desktopThemeButton = document.getElementById("theme-toggle");
+  const mobileThemeButton = document.getElementById("theme-toggle-mobile");
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenuPanel = document.getElementById("mobile-menu-panel");
+
+  function updateThemeButtons() {
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+    const icon = isLight ? "🌙" : "☀️";
+    if (desktopThemeButton) desktopThemeButton.textContent = icon;
+    if (mobileThemeButton) mobileThemeButton.textContent = icon;
+  }
+
+  function toggleTheme() {
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+    if (isLight) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    }
+    updateThemeButtons();
+  }
+
+  if (desktopThemeButton) {
+    desktopThemeButton.addEventListener("click", toggleTheme);
+  }
+
+  if (mobileThemeButton) {
+    mobileThemeButton.addEventListener("click", toggleTheme);
+  }
+
+  updateThemeButtons();
+
+  if (mobileMenuToggle && mobileMenuPanel) {
+    mobileMenuToggle.addEventListener("click", function () {
+      const isOpen = !mobileMenuPanel.hasAttribute("hidden");
+      if (isOpen) {
+        mobileMenuPanel.setAttribute("hidden", "");
+        mobileMenuToggle.setAttribute("aria-expanded", "false");
+        mobileMenuToggle.textContent = "☰";
+      } else {
+        mobileMenuPanel.removeAttribute("hidden");
+        mobileMenuToggle.setAttribute("aria-expanded", "true");
+        mobileMenuToggle.textContent = "✕";
+      }
+    });
+  }
+
+  function slugify(text) {
+    return String(text)
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  }
+
+  function addHeadingAnchors() {
+    const content = document.getElementById("page-content");
+    if (!content) return;
+
+    const headings = content.querySelectorAll("h2, h3, h4");
+    headings.forEach((heading) => {
+      if (!heading.id) {
+        heading.id = slugify(heading.textContent);
+      }
+
+      if (heading.querySelector(".heading-anchor")) return;
+
+      const anchor = document.createElement("a");
+      anchor.className = "heading-anchor";
+      anchor.href = `#${heading.id}`;
+      anchor.setAttribute("aria-label", `Link to ${heading.textContent}`);
+      anchor.textContent = "#";
+
+      heading.appendChild(anchor);
+    });
+  }
+
+  function addCopyButtonsToCodeBlocks() {
+    const isContributingPage = window.location.pathname.includes("/pages/contributing/");
+    if (!isContributingPage) return;
+
+    const firstCodeBlock = document.querySelector(".page-content pre");
+    if (!firstCodeBlock) return;
+
+    if (firstCodeBlock.parentElement.classList.contains("code-block-wrapper")) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-block-wrapper";
+
+    const button = document.createElement("button");
+    button.className = "copy-btn";
+    button.type = "button";
+    button.textContent = "Copy";
+
+    button.addEventListener("click", () => {
+      const code = firstCodeBlock.innerText;
+      navigator.clipboard.writeText(code);
+
+      button.textContent = "Copied!";
+      setTimeout(() => {
+        button.textContent = "Copy";
+      }, 1500);
+    });
+
+    firstCodeBlock.parentNode.insertBefore(wrapper, firstCodeBlock);
+    wrapper.appendChild(button);
+    wrapper.appendChild(firstCodeBlock);
+  }
+
+  addHeadingAnchors();
+  addCopyButtonsToCodeBlocks();
+
+  function setupSearch(inputId, resultsId) {
+    const searchInput = document.getElementById(inputId);
+    const searchResults = document.getElementById(resultsId);
+    if (!searchInput || !searchResults) return;
+
+    let pages = [];
+    let selectedIndex = -1;
+
+    fetch("{{ '/search.json' | relative_url }}")
+      .then(response => response.json())
+      .then(data => {
+        pages = data;
+      })
+      .catch(error => {
+        console.error("Search index failed to load:", error);
+      });
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, function (m) {
+        return ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;'
+        })[m];
+      });
+    }
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function prettifyGroup(group) {
+      if (group === "general") return "General";
+      if (group === "guides") return "Guides";
+      if (group === "emergency") return "Emergency Procedures";
+      if (group === "maintenance") return "Maintenance";
+      if (group === "systems") return "Systems";
+      if (group === "reactor") return "Reactor";
+      return (group || "Page").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function scorePage(page, query) {
+      const q = query.toLowerCase();
+      const title = (page.title || "").toLowerCase();
+      const content = (page.content || "").toLowerCase();
+
+      let score = 0;
+      if (title.includes(q)) score += 100;
+      if (content.includes(q)) score += 25;
+
+      const words = q.split(/\s+/).filter(Boolean);
+      for (const word of words) {
+        if (title.includes(word)) score += 20;
+        if (content.includes(word)) score += 5;
+      }
+      return score;
+    }
+
+    function makeSnippet(content, query) {
+      const text = content || "";
+      const lowerText = text.toLowerCase();
+      const lowerQuery = query.toLowerCase();
+      const index = lowerText.indexOf(lowerQuery);
+
+      if (index === -1) {
+        return text.slice(0, 120) + (text.length > 120 ? "..." : "");
+      }
+
+      const start = Math.max(0, index - 40);
+      const end = Math.min(text.length, index + 80);
+      let snippet = text.slice(start, end);
+
+      if (start > 0) snippet = "..." + snippet;
+      if (end < text.length) snippet = snippet + "...";
+
+      return snippet;
+    }
+
+    function highlightMatch(text, query) {
+      let result = escapeHtml(text);
+      const words = query.trim().split(/\s+/).filter(Boolean).sort((a, b) => b.length - a.length);
+
+      words.forEach((word) => {
+        const re = new RegExp(`(${escapeRegExp(word)})`, "gi");
+        result = result.replace(re, '<mark>$1</mark>');
+      });
+
+      return result;
+    }
+
+    function getResultItems() {
+      return Array.from(searchResults.querySelectorAll(".search-result-item"));
+    }
+
+    function updateSelectedResult() {
+      const items = getResultItems();
+
+      items.forEach((item, index) => {
+        if (index === selectedIndex) {
+          item.classList.add("is-selected");
+          item.setAttribute("aria-selected", "true");
+        } else {
+          item.classList.remove("is-selected");
+          item.removeAttribute("aria-selected");
+        }
+      });
+
+      if (selectedIndex >= 0 && items[selectedIndex]) {
+        items[selectedIndex].scrollIntoView({ block: "nearest" });
+      }
+    }
+
+    function clearSelection() {
+      selectedIndex = -1;
+      updateSelectedResult();
+    }
+
+    function renderResults(matches, query) {
+      selectedIndex = -1;
+
+      if (!matches.length) {
+        searchResults.innerHTML = '<div class="search-empty">No results found</div>';
+        searchResults.classList.add("is-open");
+        return;
+      }
+
+      searchResults.innerHTML = matches.slice(0, 8).map(page => {
+        const title = highlightMatch(page.title, query);
+        const snippet = highlightMatch(makeSnippet(page.content, query), query);
+
+        return `
+          <a class="search-result-item" href="${page.url}">
+            <span class="search-result-title">${title}</span>
+            <span class="search-result-meta">${escapeHtml(prettifyGroup(page.nav_group))}</span>
+            <span class="search-result-snippet">${snippet}</span>
+          </a>
+        `;
+      }).join("");
+
+      searchResults.classList.add("is-open");
+      updateSelectedResult();
+    }
+
+    searchInput.addEventListener("input", function () {
+      const query = searchInput.value.trim();
+
+      if (!query) {
+        searchResults.innerHTML = "";
+        searchResults.classList.remove("is-open");
+        clearSelection();
+        return;
+      }
+
+      const matches = pages
+        .map(page => ({ ...page, _score: scorePage(page, query) }))
+        .filter(page => page._score > 0)
+        .sort((a, b) => b._score - a._score);
+
+      renderResults(matches, query);
+    });
+
+    searchInput.addEventListener("focus", function () {
+      if (searchResults.innerHTML.trim()) {
+        searchResults.classList.add("is-open");
+      }
+    });
+
+    searchInput.addEventListener("keydown", function (event) {
+      const items = getResultItems();
+      const hasResults = items.length > 0;
+
+      if (event.key === "ArrowDown") {
+        if (!hasResults) return;
+        event.preventDefault();
+        selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+        updateSelectedResult();
+      }
+
+      if (event.key === "ArrowUp") {
+        if (!hasResults) return;
+        event.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, 0);
+        updateSelectedResult();
+      }
+
+      if (event.key === "Enter") {
+        if (selectedIndex >= 0 && items[selectedIndex]) {
+          event.preventDefault();
+          window.location.href = items[selectedIndex].href;
+        }
+      }
+
+      if (event.key === "Escape") {
+        searchResults.classList.remove("is-open");
+        clearSelection();
+        searchInput.blur();
+      }
+    });
+
+    searchResults.addEventListener("mousemove", function (event) {
+      const item = event.target.closest(".search-result-item");
+      if (!item) return;
+
+      const items = getResultItems();
+      const index = items.indexOf(item);
+
+      if (index !== -1) {
+        selectedIndex = index;
+        updateSelectedResult();
+      }
+    });
+
+    document.addEventListener("click", function (event) {
+      const wrapper = searchInput.closest(".sidebar-search");
+      if (!event.target.closest(".sidebar-search") || (wrapper && !wrapper.contains(event.target))) {
+        searchResults.classList.remove("is-open");
+        clearSelection();
+      }
+    });
+    const pageLoader = document.getElementById("page-loader");
+
+if (pageLoader) {
+  const hasLoaded = sessionStorage.getItem("wiki-loaded");
+
+  if (hasLoaded === "true") {
+    pageLoader.style.display = "none";
+  } else {
+    let pageLoaded = false;
+    let minTimePassed = false;
+
+    function tryHideLoader() {
+      if (pageLoaded && minTimePassed) {
+        pageLoader.classList.add("is-hidden");
+
+        sessionStorage.setItem("wiki-loaded", "true");
+      }
+    }
+
+    window.addEventListener("load", () => {
+      pageLoaded = true;
+      tryHideLoader();
+    });
+
+    setTimeout(() => {
+      minTimePassed = true;
+      tryHideLoader();
+    }, 1000);
+  }
+}
+const cookieBanner = document.getElementById("cookie-banner");
+const cookieAccept = document.getElementById("cookie-accept");
+const cookieDecline = document.getElementById("cookie-decline");
+
+if (cookieBanner) {
+  const cookieChoice = localStorage.getItem("wiki-cookie-choice");
+
+  if (!cookieChoice) {
+    setTimeout(() => {
+      cookieBanner.hidden = false;
+      requestAnimationFrame(() => {
+        cookieBanner.classList.add("is-visible");
+      });
+    }, 600);
+  }
+
+  function hideCookieBanner() {
+    cookieBanner.classList.remove("is-visible");
+    setTimeout(() => {
+      cookieBanner.hidden = true;
+    }, 250);
+  }
+
+  if (cookieAccept) {
+    cookieAccept.addEventListener("click", () => {
+      localStorage.setItem("wiki-cookie-choice", "accepted");
+      hideCookieBanner();
+    });
+  }
+
+  if (cookieDecline) {
+    cookieDecline.addEventListener("click", () => {
+      localStorage.setItem("wiki-cookie-choice", "dismissed");
+      hideCookieBanner();
+    });
+  }
+}
+  }
+
+  setupSearch("wiki-search", "search-results");
+  setupSearch("wiki-search-mobile", "search-results-mobile");
+});
+</script>
+<div id="cookie-banner" class="cookie-banner" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <strong>Cookie Notice</strong>
+      <p>
+        This site uses essential cookies and local storage for features such as theme preferences and interface settings.
+        <a href="{{ '/legal/privacy-cookies/' | relative_url }}">Learn more</a>.
+      </p>
+    </div>
+
+    <div class="cookie-banner-actions">
+      <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">Accept</button>
+      <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">Dismiss</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

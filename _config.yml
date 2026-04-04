@@ -1,0 +1,15 @@
+title: Looped Operations Wiki
+description: Official Operations Manual
+theme: minima
+
+url: https://pulsegridstudios.github.io
+baseurl: /contributing
+
+logo: /assets/images/loopedops.png
+
+aux_links:
+  PulseGrid Studios: https://pulsegridstudios.github.io
+  Roblox Game: https://www.roblox.com/games/103236484372211/Looped-Operation
+
+plugins:
+  - jekyll-relative-links

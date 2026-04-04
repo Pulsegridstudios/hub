@@ -1,0 +1,98 @@
+📘 Looped Operations Wiki
+
+Official documentation for Looped Operations — a Roblox-based nuclear facility simulation focused on realism, control systems, and operator procedures.
+
+---
+
+⚙️ About
+
+The Looped Operations Wiki serves as the central knowledge base for all systems within the facility, including:
+
+- Reactor operation procedures
+- Control room systems and interfaces
+- Emergency response protocols
+- Engineering and maintenance references
+
+This documentation is designed to support both new operators and experienced personnel.
+
+---
+
+🏭 Project Overview
+
+Looped Operations is a detailed simulation of an Advanced Gas-cooled Reactor (AGR) environment built on Roblox.
+
+The goal of this project is to provide:
+
+- 🔬 Realistic reactor behaviour
+- 🎛️ Interactive control systems
+- 🚨 Emergency scenario training
+- 🧠 Educational insight into nuclear operations
+
+---
+
+📚 Wiki Structure
+
+The wiki is organised into structured sections:
+
+- 🖥️ General — Core information and control room basics
+- ⚙️ Guides — Step-by-step operational procedures
+- 🚨 Emergency Procedures — Critical response documentation
+- 🔧 Systems — Detailed breakdowns of plant systems
+
+Navigation is automatically generated using page metadata ("nav_group" and "nav_order").
+
+---
+
+✍️ Contributing
+
+Contributions are welcome.
+
+To add or edit pages:
+
+1. Create a new ".md" file inside "/wiki/pages/"
+2. Add frontmatter:
+
+---
+title: Page Title
+layout: wiki
+nav_group: guides
+nav_order: 1
+---
+
+3. Write content using Markdown
+4. Commit and push changes
+
+The sidebar and search will update automatically.
+
+---
+
+🚧 Status
+
+⚠️ This wiki is currently under active development.
+
+Some pages may be incomplete or subject to change as systems evolve.
+
+---
+
+🔗 Links
+
+- 🌐 Wiki: https://pulsegridstudios.github.io/wiki
+- 🏢 PulseGrid Studios: https://pulsegridstudios.github.io
+- 🎮 Roblox Game: https://www.roblox.com/games/103236484372211/Looped-Operation
+
+---
+
+📄 License
+
+This project is part of the Looped Operations ecosystem.
+
+All content is intended for use within the project unless otherwise stated.
+
+---
+
+👷 Final Note
+
+«“There is no such thing as a small anomaly.”»
+
+Always follow procedures. Always verify system states.
+And never ignore a warning.
