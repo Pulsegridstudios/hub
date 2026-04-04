@@ -4,7 +4,7 @@ repository: Pulsegridstudios/contributing
 theme: minima
 
 url: https://pulsegridstudios.github.io
-baseurl: /contributing
+baseurl: /hub
 
 logo: /assets/images/loopedops.png
 
