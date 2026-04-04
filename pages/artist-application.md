@@ -16,12 +16,12 @@ The 3D Artist role is responsible for creating and refining visual assets used w
 
 This includes:
 
-- 3D models (props, equipment, environment assets)  
+- 3D models for props, equipment, and environment assets  
 - Optimised meshes suitable for Roblox  
-- Texturing and material setup  
-- Maintaining a consistent visual style across the game  
+- Materials, texturing, and visual consistency  
+- Supporting developers with game-ready assets  
 
-Artists are expected to produce **clean, optimised, and game-ready assets**, while collaborating with developers and designers.
+Artists are expected to produce **clean, optimised, and game-ready work**, while maintaining consistent scale, quality, and style across the project.
 
 ---
 
@@ -32,13 +32,12 @@ Applicants must:
 - Be **16 years of age or older**  
 - Demonstrate a **good level of written English communication**  
 - Have experience using **Blender or similar 3D software**  
-- Understand basic modelling principles:
+- Understand basic modelling principles, including:
   - Clean topology  
-  - Optimisation (low poly where needed)  
   - UV mapping  
-  - Texturing basics  
-- Be able to create assets suitable for **real-time game performance**  
-- Be willing to follow project structure and visual standards  
+  - Optimisation for game use  
+  - Consistent proportions and scale  
+- Be willing to follow project standards and visual guidelines  
 
 > ⚠️ **Warning**  
 > Applications from individuals under the age of 16 will not be considered.
@@ -49,14 +48,14 @@ Applicants must:
 
 3D Artists are expected to:
 
-- Optimise models for performance (low poly, efficient geometry)  
-- Maintain consistent scale and proportions  
-- Follow project naming and organisation standards  
-- Test assets in Roblox where required  
-- Work collaboratively with developers and other contributors  
+- Create assets that are suitable for Roblox performance requirements  
+- Avoid unnecessary geometry or overly complex meshes  
+- Keep models organised and easy to work with  
+- Accept feedback professionally and revise work where needed  
+- Maintain a consistent visual style across the game  
 
 > ℹ️ **Note**  
-> Assets may be reviewed and adjusted before being accepted into the main project.
+> Submitted assets may be reviewed and adjusted before being accepted into the main project.
 
 ---
 
@@ -146,8 +145,8 @@ This means:
           <option value="">Select...</option>
           <option value="Props">Props</option>
           <option value="Environment">Environment</option>
-          <option value="Machinery">Machinery / Industrial</option>
-          <option value="UI Assets">UI / Icons</option>
+          <option value="Machinery / Industrial">Machinery / Industrial</option>
+          <option value="UI Assets">UI Assets</option>
           <option value="Texturing">Texturing</option>
         </select>
       </div>
@@ -197,8 +196,8 @@ This means:
       <div class="agreement-box">
         <p>I understand contributor access is for project work only.</p>
         <p>I will not leak or misuse project assets.</p>
-        <p>I agree to follow project standards and guidelines.</p>
-        <p>I understand I may be removed for misuse or poor conduct.</p>
+        <p>I agree to follow project standards and visual guidelines.</p>
+        <p>I understand that accepted contributors may be removed for misuse of access or poor conduct.</p>
       </div>
 
       <div class="form-row checkbox-row">
@@ -221,9 +220,129 @@ This means:
       <button type="submit" id="artist-app-submit" style="display:none;">Submit Application</button>
     </div>
 
-    <p id="artist-app-status" class="form-status"></p>
+    <p id="artist-app-status" class="form-status" role="status" aria-live="polite"></p>
   </form>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("artist-app-form");
+  if (!form) return;
+
+  const steps = Array.from(form.querySelectorAll(".form-step"));
+  const prevBtn = document.getElementById("form-prev");
+  const nextBtn = document.getElementById("form-next");
+  const submitBtn = document.getElementById("artist-app-submit");
+  const indicator = document.getElementById("form-step-indicator");
+  const status = document.getElementById("artist-app-status");
+
+  let currentStep = 0;
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.toggle("is-active", i === index);
+    });
+
+    prevBtn.disabled = index === 0;
+    indicator.textContent = `Step ${index + 1} of ${steps.length}`;
+
+    const isLast = index === steps.length - 1;
+    nextBtn.style.display = isLast ? "none" : "inline-flex";
+    submitBtn.style.display = isLast ? "inline-flex" : "none";
+  }
+
+  function validateStep(index) {
+    const fields = steps[index].querySelectorAll("input, textarea, select");
+    for (const field of fields) {
+      if (!field.checkValidity()) {
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  prevBtn.addEventListener("click", function () {
+    if (currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+
+  nextBtn.addEventListener("click", function () {
+    if (!validateStep(currentStep)) return;
+    if (currentStep < steps.length - 1) {
+      currentStep++;
+      showStep(currentStep);
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    if (!validateStep(currentStep)) return;
+
+    status.textContent = "";
+    status.classList.remove("is-success", "is-error");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
+
+    const formData = new FormData(form);
+    const payload = {
+      application_type: "artist",
+      roblox_name: String(formData.get("roblox_name") || "").trim(),
+      discord_name: String(formData.get("discord_name") || "").trim(),
+      timezone: String(formData.get("timezone") || "").trim(),
+      community_time: String(formData.get("community_time") || "").trim(),
+      blender_experience: String(formData.get("blender_experience") || "").trim(),
+      team_experience: String(formData.get("team_experience") || "").trim(),
+      experience_time: String(formData.get("experience_time") || "").trim(),
+      assets_created: String(formData.get("assets_created") || "").trim(),
+      preferred_area: String(formData.get("preferred_area") || "").trim(),
+      portfolio_links: String(formData.get("portfolio_links") || "").trim(),
+      best_project: String(formData.get("best_project") || "").trim(),
+      workflow: String(formData.get("workflow") || "").trim(),
+      scenario_optimisation: String(formData.get("scenario_optimisation") || "").trim(),
+      scenario_style: String(formData.get("scenario_style") || "").trim(),
+      scenario_feedback: String(formData.get("scenario_feedback") || "").trim(),
+      agreement: formData.get("agreement") ? "Yes" : "No",
+      website: String(formData.get("website") || "").trim()
+    };
+
+    try {
+      const response = await fetch("https://lingering-frost-5384.frazergrant345.workers.dev/artist-application", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Submission failed.");
+      }
+
+      form.reset();
+      currentStep = 0;
+      showStep(currentStep);
+      status.textContent = "Application submitted successfully.";
+      status.classList.add("is-success");
+    } catch (error) {
+      status.textContent = error.message || "Something went wrong.";
+      status.classList.add("is-error");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Application";
+    }
+  });
+
+  showStep(currentStep);
+});
+</script>
 
 ---
 
@@ -234,4 +353,4 @@ Applications are reviewed by the project team. Please allow time for responses.
 If you are unsuccessful, you may be invited to apply again in future depending on project needs.
 
 > 💡 **Tip**  
-> Clear, honest, and professional answers will always help your application more than trying to sound overly formal.
+> Clear, honest, and professional answers, along with a strong portfolio, will always support your application.
