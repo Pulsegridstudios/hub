@@ -13,15 +13,48 @@ status: reviewed
 
 ## Overview
 
-Use this page to apply for development roles within the Looped Operations project.
+The Developer role is responsible for contributing to the design, development, and maintenance of systems within Looped Operations.
 
-This application is intended for contributors interested in:
+This includes work on:
 
-- Roblox scripting
-- Lua / Luau systems
-- UI development
-- game systems
-- optimisation and technical support
+- Roblox systems and scripting  
+- UI and user experience  
+- Game mechanics and logic  
+- Performance and optimisation  
+
+Developers are expected to follow established standards, maintain clean and structured code, and collaborate effectively with other contributors.
+
+
+---
+
+## Eligibility Requirements
+
+Applicants must:
+
+- Be **16 years of age or older**  
+- Demonstrate a **good level of written English communication**  
+- Have a working knowledge of **Lua / Luau (Roblox scripting)**  
+- Be able to write **clean, readable, and maintainable code**  
+- Understand basic concepts such as:
+  - Variables, functions, and tables  
+  - Events and client/server structure  
+  - Debugging and problem solving  
+- Be willing to follow project structure and coding standards  
+
+> ⚠️ **Warning**  
+> Applications from individuals under the age of 16 will not be considered.
+
+## Expectations
+
+Developers are expected to:
+
+- Test their work before submission  
+- Avoid unnecessary complexity  
+- Write efficient and optimised code  
+- Document systems where appropriate  
+
+> ℹ️ **Note**  
+> Code may be reviewed before being accepted into the main project.
 
 
 ## Voluntary Roles

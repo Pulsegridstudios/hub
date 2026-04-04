@@ -12,13 +12,32 @@ status: reviewed
 ---
 ## Overview
 
-Use this page to apply for Discord-related roles within the Looped Operations project.
+The Discord Moderator role is responsible for maintaining a safe, professional, and structured environment within the Looped Operations community.
 
-Applications may be used for positions such as:
+Moderators are expected to:
 
-- Discord Moderator
-- Community Support
-- Future staff and contributor roles
+- Enforce server rules fairly and consistently  
+- Assist users with queries and issues  
+- Maintain a calm and respectful atmosphere  
+- Escalate serious incidents where required  
+
+This is a **voluntary position** and requires a consistent level of activity, maturity, and professionalism.
+
+---
+
+## Eligibility Requirements
+
+Applicants must:
+
+- Be **16 years of age or older**  
+- Demonstrate a **good level of written English communication**  
+- Be able to communicate clearly and professionally with users  
+- Remain calm under pressure  
+- Show good judgement and decision-making  
+- Be willing to follow established procedures and guidelines  
+
+> ⚠️ **Warning**  
+> Applications from individuals under the age of 16 will not be considered.
 
 ## Voluntary Roles
 
