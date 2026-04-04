@@ -18,10 +18,10 @@ Applications are open for selected roles within Looped Operations.
 
 ## Available Roles
 
-- [Discord Moderator]({{ '/pages/discord-application/' | relative_url }})
-- Game Moderator *(Closed)*  
-- Developer *(Closed)*  
-- Tester *(Closed)*  
+- [Discord Moderator]({{ '/pages/no-current-vacancies/' | relative_url }})
+- [Game Moderator]({{ '/pages/no-current-vacancies/' | relative_url }})
+- [Developer]({{ '/pages/no-current-vacancies/' | relative_url }})
+- [Tester]({{ '/pages/no-current-vacancies/' | relative_url }})
 
 ---
 
