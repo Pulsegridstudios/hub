@@ -23,6 +23,22 @@ This application is intended for contributors interested in:
 - game systems
 - optimisation and technical support
 
+
+## Voluntary Roles
+
+All roles within PulseGrid Studios are currently offered on a **voluntary basis**.
+
+This means:
+
+- No financial compensation is provided  
+- Contributions are made at your own discretion  
+- Experience gained may support personal development  
+
+> ℹ️ **Note**  
+> These roles are intended for individuals who wish to contribute to the project, gain experience, and be part of the development process.
+
+---
+
 > ℹ️ **Note**  
 > Submission of an application does not guarantee acceptance.
 

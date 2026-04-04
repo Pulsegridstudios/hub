@@ -20,6 +20,21 @@ Applications may be used for positions such as:
 - Community Support
 - Future staff and contributor roles
 
+## Voluntary Roles
+
+All roles within PulseGrid Studios are currently offered on a **voluntary basis**.
+
+This means:
+
+- No financial compensation is provided  
+- Contributions are made at your own discretion  
+- Experience gained may support personal development  
+
+> ℹ️ **Note**  
+> These roles are intended for individuals who wish to contribute to the project, gain experience, and be part of the development process.
+
+---
+
 > ℹ️ **Note**  
 > Submission of an application does not guarantee acceptance.
 
@@ -29,7 +44,7 @@ Applications may be used for positions such as:
 
 Please make sure you:
 
-- understand the expectations of staff conduct
+- understand the expectations of staff [conduct]({{ '/pages/discord-moderation/' | relative_url }})
 - can remain professional when dealing with users
 - are comfortable following rules and internal guidance
 - understand that misuse of staff tools will result in removal
