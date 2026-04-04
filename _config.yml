@@ -11,6 +11,7 @@ logo: /assets/images/loopedops.png
 aux_links:
   PulseGrid Studios: https://pulsegridstudios.github.io
   Roblox Game: https://www.roblox.com/games/103236484372211/Looped-Operation
+  Wiki: https://pulsegridstudios.github.io/wiki/
 
 plugins:
   - jekyll-relative-links
