@@ -40,7 +40,7 @@ This means:
 
 | Role               | Status | Access |
 |--------------------|--------|--------|
-| Discord Moderator  | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
+| Discord Moderator  | Open   | [Apply Now]({{ '/pages/discord-application/' | relative_url }}) |
 | Game Moderator     | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
 | Developer          | Open   | [Apply Now]({{ '/pages/developer-application/' | relative_url }}) |
 | Tester             | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
