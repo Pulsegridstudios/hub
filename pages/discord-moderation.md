@@ -7,6 +7,7 @@ nav_order: 2
 hero_image: /assets/images/control-room-banner.jpg
 hero_title: Discord Moderation
 hero_subtitle: Community Operations & Enforcement Guidelines
+status: reviewed
 ---
 
 ## 📑 Table of Contents

@@ -57,6 +57,16 @@ Moderators must:
 - Avoid interfering with normal gameplay unnecessarily  
 - Never use tools for personal advantage  
 - Communicate clearly and professionally  
+> ℹ️ **Note**  
+> Non-moderation tools (e.g. server events or testing features) may only be used:
+> - In private/testing environments, or  
+> - With explicit approval from senior staff
+>
+> Such usage must:
+> - Be appropriate to the environment  
+> - Not disrupt gameplay or other users  
+> - Be logged or observable where possible
+
 
 > ⚠️ **Warning**  
 > Abuse of in-game permissions will result in immediate removal.
