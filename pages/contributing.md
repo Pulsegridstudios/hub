@@ -2,7 +2,7 @@
 layout: wiki
 nav_order: 1
 permalink: /pages/contributing/
-nav_group: guides
+nav_group: wiki
 title: Contributing to the wiki
 hero_image: /assets/images/control-room-banner.jpg
 hero_title: Contributing to the wiki
