@@ -134,7 +134,7 @@
                       {% when "wiki" %}📚
                       {% when "development" %}⚙️
                       {% when "discord" %}💬
-                      {% when "conduct" %}📘
+                      {% when "conduct" %}⚖️
                       {% else %}📁
                     {% endcase %}
                   </span>
@@ -204,14 +204,14 @@
           <a class="back-link" href="{{ '/' | relative_url }}">← Back</a>
 
           <div class="menu-heading">
-{% case page.nav_group %}
-  {% when "applications" %}Applications
-  {% when "wiki" %}Wiki Contributions
-  {% when "development" %}Game Development
-  {% when "discord" %}Discord Moderation
-  {% when "conduct" %}Code of Conduct
-  {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
-{% endcase %}
+            {% case page.nav_group %}
+              {% when "applications" %}Applications
+              {% when "wiki" %}Wiki Contributions
+              {% when "development" %}Game Development
+              {% when "discord" %}Discord Moderation
+              {% when "conduct" %}Code of Conduct
+              {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
+            {% endcase %}
           </div>
 
           {% assign group_pages = wiki_pages | where: "nav_group", page.nav_group | sort: "nav_order" %}
@@ -250,7 +250,7 @@
                       {% when "wiki" %}📚
                       {% when "development" %}⚙️
                       {% when "discord" %}💬
-                      {% when "conduct" %}📘
+                      {% when "conduct" %}⚖️
                       {% else %}📁
                     {% endcase %}
                   </span>
@@ -260,7 +260,7 @@
                       {% when "wiki" %}Wiki Contributions
                       {% when "development" %}Game Development
                       {% when "discord" %}Discord Moderation
-   {% when "conduct" %}Code of Conduct
+                      {% when "conduct" %}Code of Conduct
                       {% else %}{{ group | replace: "-", " " | capitalize }}
                     {% endcase %}
                   </span>
@@ -322,7 +322,7 @@
               {% when "wiki" %}Wiki Contributions
               {% when "development" %}Game Development
               {% when "discord" %}Discord Moderation
-              {% when "guides" %}Guides
+              {% when "conduct" %}Code of Conduct
               {% else %}{{ page.nav_group | replace: "-", " " | capitalize }}
             {% endcase %}
           </span>
@@ -338,8 +338,8 @@
           {% assign group_label = "Game Development" %}
         {% elsif page.nav_group == "discord" %}
           {% assign group_label = "Discord Moderation" %}
-        {% elsif page.nav_group == "guides" %}
-          {% assign group_label = "Guides" %}
+        {% elsif page.nav_group == "conduct" %}
+          {% assign group_label = "Code of Conduct" %}
         {% endif %}
 
         {% if page.title and page.nav_group != "home" and page.title != group_label %}
@@ -540,7 +540,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (group === "wiki") return "Wiki Contributions";
       if (group === "development") return "Game Development";
       if (group === "discord") return "Discord Moderation";
-      if (group === "guides") return "Guides";
+      if (group === "conduct") return "Code of Conduct";
       return (group || "Page").replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
     }
 
