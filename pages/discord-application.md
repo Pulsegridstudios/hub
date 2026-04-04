@@ -3,9 +3,8 @@ title: Discord Application
 layout: wiki
 permalink: /pages/discord-application/
 nav_group: applications
-nav_order: 0
+nav_order: 99
 nav_hidden: true
-hero_image: /assets/images/control-room-banner.jpg
 hero_title: Discord Application
 hero_subtitle: Apply for Discord moderation and community support roles
 status: reviewed
@@ -30,7 +29,6 @@ Applications may be used for positions such as:
 
 Please make sure you:
 
-- please read our [guidelines]({{ '/pages/discord-moderation/' | relative_url }})
 - understand the expectations of staff conduct
 - can remain professional when dealing with users
 - are comfortable following rules and internal guidance
@@ -43,18 +41,97 @@ Please make sure you:
 
 ## Application Form
 
-<div class="form-embed-wrapper">
-  <iframe
-    src="https://docs.google.com/forms/d/e/1FAIpQLScQ9TXGGv0TSLtCdUB1tdclSUn_TeRWdxFu8eL86hI8eIaq3g/viewform?embedded=true"
-    width="100%"
-    height="1200"
-    frameborder="0"
-    marginheight="0"
-    marginwidth="0"
-    class="application-form-embed">
-    Loading…
-  </iframe>
+<div class="application-panel">
+  <form id="discord-app-form" class="application-form">
+    <div class="form-row">
+      <label for="discord_name">Discord Username</label>
+      <input id="discord_name" name="discord_name" type="text" required>
+    </div>
+
+    <div class="form-row">
+      <label for="roblox_name">Roblox Username</label>
+      <input id="roblox_name" name="roblox_name" type="text">
+    </div>
+
+    <div class="form-row">
+      <label for="age">Age</label>
+      <input id="age" name="age" type="text" required>
+    </div>
+
+    <div class="form-row">
+      <label for="experience">Relevant Experience</label>
+      <textarea id="experience" name="experience" rows="5" required></textarea>
+    </div>
+
+    <div class="form-row">
+      <label for="why_join">Why do you want to join?</label>
+      <textarea id="why_join" name="why_join" rows="6" required></textarea>
+    </div>
+
+    <div class="form-row honeypot" aria-hidden="true">
+      <label for="website">Website</label>
+      <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" id="discord-app-submit">Submit Application</button>
+    </div>
+
+    <p id="discord-app-status" class="form-status" role="status" aria-live="polite"></p>
+  </form>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("discord-app-form");
+  const status = document.getElementById("discord-app-status");
+  const submitButton = document.getElementById("discord-app-submit");
+
+  if (!form || !status || !submitButton) return;
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    status.textContent = "";
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    const formData = new FormData(form);
+    const payload = {
+      discord_name: String(formData.get("discord_name") || "").trim(),
+      roblox_name: String(formData.get("roblox_name") || "").trim(),
+      age: String(formData.get("age") || "").trim(),
+      experience: String(formData.get("experience") || "").trim(),
+      why_join: String(formData.get("why_join") || "").trim(),
+      website: String(formData.get("website") || "").trim()
+    };
+
+    try {
+      const response = await fetch("https://lingering-frost-5384.frazergrant345.workers.dev/discord-application", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Submission failed.");
+      }
+
+      form.reset();
+      status.textContent = "Application submitted successfully.";
+    } catch (error) {
+      status.textContent = error.message || "Something went wrong.";
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Application";
+    }
+  });
+});
+</script>
 
 ---
 
