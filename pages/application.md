@@ -38,18 +38,66 @@ This means:
 
 ## Available Roles
 
-| Role               | Status | Access |
-|--------------------|--------|--------|
-| Discord Moderator  | Open   | [Apply Now]({{ '/pages/discord-application/' | relative_url }}) |
-| Developer          | Open   | [Apply Now]({{ '/pages/developer-application/' | relative_url }}) |
-| 3D Artist          | Open   | [Apply Now]({{ '/pages/artist-application/' | relative_url }}) |
-| Game Moderator     | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
-| Tester             | Closed | [View Details]({{ '/pages/no-current-vacancies/' | relative_url }}) |
+<table class="role-table">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Status</th>
+      <th>Access</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>
+        <strong>Discord Moderator</strong><br>
+        <span class="role-desc">Community moderation and support</span>
+      </td>
+      <td><span class="status-badge open">Open</span></td>
+      <td><a href="{{ '/pages/discord-application/' | relative_url }}">Apply Now</a></td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Developer</strong><br>
+        <span class="role-desc">Scripting, systems, and game logic</span>
+      </td>
+      <td><span class="status-badge open">Open</span></td>
+      <td><a href="{{ '/pages/developer-application/' | relative_url }}">Apply Now</a></td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>3D Artist</strong><br>
+        <span class="role-desc">Models, assets, and environment design</span>
+      </td>
+      <td><span class="status-badge open">Open</span></td>
+      <td><a href="{{ '/pages/artist-application/' | relative_url }}">Apply Now</a></td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Game Moderator</strong><br>
+        <span class="role-desc">In-game moderation and enforcement</span>
+      </td>
+      <td><span class="status-badge closed">Closed</span></td>
+      <td><a href="{{ '/pages/no-current-vacancies/' | relative_url }}">View Details</a></td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Tester</strong><br>
+        <span class="role-desc">Testing systems and reporting issues</span>
+      </td>
+      <td><span class="status-badge closed">Closed</span></td>
+      <td><a href="{{ '/pages/no-current-vacancies/' | relative_url }}">View Details</a></td>
+    </tr>
+
+  </tbody>
+</table>
 
 > ℹ️ **Note**  
 > When applications are open, links will redirect to the relevant application form.
-
----
 
 ## Requirements
 
