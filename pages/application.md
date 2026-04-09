@@ -53,7 +53,7 @@ This means:
         <strong>Discord Moderator</strong><br>
         <span class="role-desc">Community moderation and support</span>
       </td>
-      <td><span class="status-badge closed">Open</span></td>
+      <td><span class="status-badge closed">Closed</span></td>
       <td><a href="{{ '/pages/no-current-vacancies/' | relative_url }}">View Details</a></td>
     </tr>
 
