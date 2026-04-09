@@ -8,108 +8,116 @@ hero_subtitle: Applications, Development and Documentation
 status: reviewed
 ---
 
+<div class="hub-home">
 
-## Overview
+  <section class="hub-hero-panel">
+    <div class="hub-hero-backdrop"></div>
+    <div class="hub-hero-grid"></div>
 
-The **Looped Operations Hub** provides centralised access to all contribution-related resources.
+    <div class="hub-hero-content">
+      <div class="hub-hero-left">
+        <p class="hub-overline">PulseGrid Studios Internal Access</p>
+        <h2>Looped Operations Contributor Hub</h2>
+        <p class="hub-lead">
+          Centralised access to applications, development standards, moderation procedures,
+          and internal documentation.
+        </p>
 
-This includes:
+        <div class="hub-hero-actions">
+          <a class="hub-action-btn primary" href="{{ '/pages/applications/' | relative_url }}">View Applications</a>
+          <a class="hub-action-btn secondary" href="{{ '/pages/contributing/' | relative_url }}">Contribution Guide</a>
+        </div>
+      </div>
 
-- Role applications  
-- Documentation standards  
-- Development guidelines  
-- Moderation procedures  
+      <div class="hub-hero-right">
+        <div class="hub-status-panel">
+          <div class="hub-status-header">
+            <span>System Status</span>
+            <span class="hub-live-indicator">ONLINE</span>
+          </div>
 
-All contributors are expected to follow the established standards outlined within this portal.
+          <div class="hub-status-list">
+            <div class="hub-status-row">
+              <span>Applications</span>
+              <span class="status-ok">Active</span>
+            </div>
+            <div class="hub-status-row">
+              <span>Wiki Contributions</span>
+              <span class="status-ok">Active</span>
+            </div>
+            <div class="hub-status-row">
+              <span>Development Docs</span>
+              <span class="status-ok">Active</span>
+            </div>
+            <div class="hub-status-row">
+              <span>Moderation Guidance</span>
+              <span class="status-ok">Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
----
+  <section class="hub-section">
+    <div class="hub-card-grid">
+      <a class="hub-card" href="{{ '/pages/applications/' | relative_url }}">
+        <div class="hub-card-icon">📋</div>
+        <div class="hub-card-body">
+          <h3>Applications</h3>
+          <p>Apply for open roles across moderation, development, and art.</p>
+          <span>Open Section</span>
+        </div>
+      </a>
 
-## Portal Sections
+      <a class="hub-card" href="{{ '/pages/contributing/' | relative_url }}">
+        <div class="hub-card-icon">📚</div>
+        <div class="hub-card-body">
+          <h3>Wiki Contributions</h3>
+          <p>Documentation standards, templates, formatting, and submission guidance.</p>
+          <span>View Guidance</span>
+        </div>
+      </a>
 
-### Applications
+      <a class="hub-card" href="{{ '/pages/game-development/' | relative_url }}">
+        <div class="hub-card-icon">⚙️</div>
+        <div class="hub-card-body">
+          <h3>Game Development</h3>
+          <p>Development standards, structure, scripting expectations, and workflows.</p>
+          <span>View Standards</span>
+        </div>
+      </a>
 
-Access application forms for available roles within the project.
+      <a class="hub-card" href="{{ '/pages/code-of-conduct/' | relative_url }}">
+        <div class="hub-card-icon">⚖️</div>
+        <div class="hub-card-body">
+          <h3>Code of Conduct</h3>
+          <p>Moderation guidance, behaviour expectations, and enforcement procedures.</p>
+          <span>Review Conduct</span>
+        </div>
+      </a>
+    </div>
+  </section>
 
-This includes:
+  <section class="hub-section hub-info-strip">
+    <div class="hub-info-box">
+      <h3>Contributor Standards</h3>
+      <ul>
+        <li>Maintain professional conduct</li>
+        <li>Follow project procedures and structure</li>
+        <li>Ensure accuracy and clarity in all work</li>
+        <li>Use systems responsibly</li>
+      </ul>
+    </div>
 
-- Discord Moderation  
-- Development Roles  
-- Other operational positions  
+    <div class="hub-info-box">
+      <h3>Getting Started</h3>
+      <ol>
+        <li>Review the contribution guidance</li>
+        <li>Read the relevant standards</li>
+        <li>Submit an application where appropriate</li>
+      </ol>
+    </div>
+  </section>
 
----
-
-### Wiki Contributions
-
-Guidance on maintaining and expanding the documentation system.
-
-Topics include:
-
-- Page structure and formatting  
-- Writing standards  
-- Submission process  
-
----
-
-### Game Development
-
-Standards and guidance for development within Looped Operations.
-
-Includes:
-
-- Lua / Luau scripting practices  
-- System structure  
-- Development expectations  
-
----
-
-### Discord Moderation
-
-Guidelines for managing and supporting the community.
-
-Includes:
-
-- Moderation procedures  
-- Incident handling  
-- Expected conduct  
-
----
-
-## Contribution Standards
-
-All contributors must:
-
-- Maintain professional conduct at all times  
-- Follow project guidelines and documentation standards  
-- Ensure accuracy and clarity in all submissions  
-- Use systems responsibly  
-
-> ⚠️ **Warning**  
-> Misuse of contributor systems or privileges may result in removal of access.
-
----
-
-## Access and Availability
-
-| System              | Status |
-|--------------------|--------|
-| Applications       | Active |
-| Wiki Contributions | Active |
-| Development Docs   | Active |
-| Moderation Guides  | Active |
-
----
-
-## Getting Started
-
-New contributors should:
-
-1. Review the Wiki Contributions section  
-2. Familiarise themselves with relevant guidelines  
-3. Submit an application where appropriate  
-
----
-
-## Final Note
-
-> ℹ️ **Note**  
-> This hub is subject to updates as the project evolves. Contributors should ensure they are following the most current guidance at all times.
+</div>
