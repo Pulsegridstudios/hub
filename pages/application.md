@@ -59,6 +59,15 @@ This means:
 
     <tr>
       <td>
+        <strong>Community Outreach</strong><br>
+        <span class="role-desc">Supporting community engagement, </span>
+      </td>
+      <td><span class="status-badge open">Open</span></td>
+      <td><a href="{{ '/pages/community-outreach-application/' | relative_url }}">Apply Now</a></td>
+    </tr>
+
+    <tr>
+      <td>
         <strong>Developer</strong><br>
         <span class="role-desc">Scripting, systems, and game logic</span>
       </td>
