@@ -14,7 +14,7 @@ status: reviewed
     <div class="hub-hero-content">
       <div class="hub-hero-left">
         <p class="hub-overline">PulseGrid Studios Internal Access</p>
-        <h2>Looped Operations  Hub</h2>
+        <h2>Looped Operations Hub</h2>
         <p class="hub-lead">
           Centralised access to applications, development standards, moderation procedures,
           and internal documentation.
