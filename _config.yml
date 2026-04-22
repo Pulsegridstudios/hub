@@ -1,4 +1,4 @@
-title: Looped Operations Hub
+title: PulseGrid Studios Hub
 description: Advanced Gas-cooled Reactor Simulation
 repository: Pulsegridstudios/contributing
 theme: minima
@@ -6,7 +6,7 @@ theme: minima
 url: https://pulsegridstudios.github.io
 baseurl: /hub
 
-logo: /assets/images/loopedops.png
+logo: /assets/images/logo.png
 
 aux_links:
   PulseGrid Studios: https://pulsegridstudios.github.io
